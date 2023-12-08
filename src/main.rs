@@ -115,7 +115,8 @@ fn get_sensor_sample(
         let max_u16 = u16::MAX as f32;
         let x_norm: f32 = 2.0 * (message.x as f32 / max_u16) - 1.0;
         let y_norm: f32 = 2.0 * (message.y as f32 / max_u16) - 1.0;
-        let z_norm: f32 = 2.0 * (message.z as f32 / max_u16) - 1.0;
+        // let z_norm: f32 = 2.0 * (message.z as f32 / max_u16) - 1.0;
+        let z_norm: f32 = message.z as f32 / max_u16;
         transform.translation.x = x_norm * 2.0;
         transform.translation.y = (z_norm * 2.0) + 0.5;
         transform.translation.z = y_norm * 2.0;
